@@ -9,19 +9,23 @@ export default function Navbar() {
         </div>
         <ul className="flex justify-center gap-5">
           <li>
-            <NavLink to="/ourStory">Our story</NavLink>
+            <NavLink to="/guitars">Guitars</NavLink>
           </li>
           <li>
-            <NavLink to="/gear">Gear</NavLink>
+            <NavLink to="/drums">Drums</NavLink>
           </li>
           <li>
-            <NavLink to="/repairs">Repairs</NavLink>
+            <NavLink to="/keys">Keys</NavLink>
           </li>
           <li>
-            <NavLink to="/stores">Stores</NavLink>
+            <NavLink to="/microphones">Microphones</NavLink>
           </li>
           <li>
-            <NavLink to="/blog">Blog</NavLink>
+            <NavLink to="/pro-Audio">Pro Audio</NavLink>
+          </li>
+
+          <li>
+            <NavLink to="/studio">Studio</NavLink>
           </li>
 
           <li>
