@@ -2,11 +2,15 @@ export default function Home() {
   return (
     <>
       <div>
-        <div>
-          <h1>video</h1>
+        <div className="">
+          <img
+            className="h-100 w-full  object-cover object-middle"
+            src="/StockCake-Guitar store display_1756638830.jpg"
+            alt="wall of guitars background"
+          />
         </div>
         <div>
-          <h1>6 items</h1>
+          <h1></h1>
         </div>
         <div>
           <h1>search bar </h1>
