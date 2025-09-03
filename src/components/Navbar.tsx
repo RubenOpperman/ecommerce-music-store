@@ -3,11 +3,11 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
   return (
     <>
-      <nav className="bg-red-500 flex justify-evenly  h-17 w-full text-white text-2xl">
-        <div className="flex justify-center">
+      <nav className="bg-red-500 flex justify-evenly  h-17 w-full text-white text-2xl  ">
+        <div className="flex justify-center items-center">
           <NavLink to="/">logo</NavLink>
         </div>
-        <ul className="flex justify-center gap-5">
+        <ul className="flex justify-center items-center gap-5">
           <li>
             <NavLink to="/guitars">Guitars</NavLink>
           </li>

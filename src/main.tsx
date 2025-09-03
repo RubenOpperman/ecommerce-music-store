@@ -4,6 +4,10 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import App from "./App.tsx";
 
+import "@fontsource/roboto/400.css"; // normal
+import "@fontsource/roboto/500.css"; // medium
+import "@fontsource/roboto/700.css"; // bold
+
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>

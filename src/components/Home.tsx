@@ -1,4 +1,23 @@
-export default function Home() {
+//import React from "react";
+
+interface IGuitarData {
+  id: number;
+  name: string;
+  image: string;
+  cost: number;
+  availability: boolean;
+  amountInStock: number;
+  amountBought: number;
+  dateAdded: string;
+  brand: string;
+}
+[];
+
+interface HomeProps {
+  GuitarData: IGuitarData;
+}
+
+export default function Home({ GuitarData }: HomeProps) {
   return (
     <>
       <div>
@@ -9,8 +28,14 @@ export default function Home() {
             alt="wall of guitars background"
           />
         </div>
-        <div>
-          <h1></h1>
+        <div className="grid grid-cols-4 p-2 ">
+          {GuitarData.map((guitar: IGuitarData) => (
+            <div key={guitar.id} className="">
+              <img src={guitar.image} alt="" className="w-50 rounded-2xl" />
+              <h3>{guitar.name}</h3>
+              <p>R{guitar.cost}</p>
+            </div>
+          ))}
         </div>
         <div>
           <h1>search bar </h1>
