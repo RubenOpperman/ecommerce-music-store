@@ -1,5 +1,3 @@
-//import React from "react";
-
 interface IGuitarData {
   id: number;
   name: string;
