@@ -71,7 +71,7 @@ export default function Home({ GuitarData }: HomeProps) {
             ))}
           </Carousel>
         </div>
-        <div className="flex justify-center my-10  ">
+        <div className="flex justify-center my-15  ">
           <div className="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.6)] rounded-md">
             <input
               type="text"
@@ -86,8 +86,23 @@ export default function Home({ GuitarData }: HomeProps) {
             </button>
           </div>
         </div>
-        <div>
-          <h1>all brands</h1>
+        <div className="py-20">
+          <Carousel
+            responsive={responsive}
+            showDots={false}
+            infinite={true}
+            transitionDuration={500}
+            arrows={false}
+            autoPlay={true}
+            customTransition="all .5s ease"
+          >
+            <img src="//musiekwereld.co.za/wp-content/uploads/2020/03/roland.gif" />
+            <img src="//musiekwereld.co.za/wp-content/uploads/2020/03/cort.gif" />
+            <img src="//musiekwereld.co.za/wp-content/uploads/2020/03/boss.gif" />
+            <img src="//musiekwereld.co.za/wp-content/uploads/2020/03/fender.gif" />
+            <img src="//musiekwereld.co.za/wp-content/uploads/2020/03/martinco.gif" />
+            <img src="//musiekwereld.co.za/wp-content/uploads/2020/03/westone.gif" />
+          </Carousel>
         </div>
       </div>
     </>
