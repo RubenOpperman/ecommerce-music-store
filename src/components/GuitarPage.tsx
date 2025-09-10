@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
+
 interface IGuitarData {
   id: number;
   name: string;
@@ -11,21 +14,48 @@ interface IGuitarData {
 }
 [];
 
-interface HomeProps {
+interface GuitarPageProps {
   GuitarData: IGuitarData;
 }
-export default function GuitarPage({ GuitarData }: HomeProps) {
+export default function GuitarPage({ GuitarData }: GuitarPageProps) {
+  const ITEMS_PER_PAGE: number = 8;
+  const [CURRENT_PAGE, setCURRENT_PAGE] = useState(1);
+  const START_INDEX = (CURRENT_PAGE - 1) * ITEMS_PER_PAGE;
+  const END_INDEX: number = CURRENT_PAGE * ITEMS_PER_PAGE;
+  const ITEMS_FOR_CURRENT_PAGE: number = GuitarData.slice(
+    START_INDEX,
+    END_INDEX
+  );
+  const TOTAL_PAGES: number = Math.ceil(GuitarData.length / ITEMS_PER_PAGE);
+
   return (
     <>
       <div>
-        <div>Search...</div>
-        <div>Product categories</div>
-        <div>Filter by price</div>
-        <div>filter brand</div>
-        <div>sorting</div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cold-4">
-          {GuitarData.slice(0, 8).map((guitar: IGuitarData) => (
-            <div key={guitar.id} className=" place-items-center m-2 p-2 ">
+        <div className="">
+          <div className="shadow-[0_4px_6px_-1px_rgba(0,0,0,0.6)] rounded-md w-[25vw] flex m-5">
+            <input
+              type="text"
+              placeholder="Product"
+              className="w-[25vw] py-2 px-4 rounded-md"
+            />
+            <button
+              type="button"
+              className="py-2 px-5 m-1 bg-black text-white rounded-md cursor-pointer"
+            >
+              <FaSearch />
+            </button>
+          </div>
+          <div className="flex">
+            <h3>Product categories</h3>
+            <input type="text" />
+          </div>
+          <div>Filter by price</div>
+          <div>filter brand</div>
+          <div>sorting</div>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg-grid-cols-4">
+          {ITEMS_FOR_CURRENT_PAGE.map((guitar: IGuitarData) => (
+            <div key={guitar.id} className="  m-2 p-2 ">
               <img
                 src={guitar.image}
                 alt=""
@@ -35,6 +65,30 @@ export default function GuitarPage({ GuitarData }: HomeProps) {
               <p className="font-medium text-lg">R{guitar.cost}</p>
             </div>
           ))}
+        </div>
+        <div className="flex justify-center my-5">
+          <button
+            disabled={CURRENT_PAGE - 1 == 0}
+            onClick={() => {
+              setCURRENT_PAGE(CURRENT_PAGE - 1);
+            }}
+            className="border-2 border-black py-2 px-4 rounded-lg mx-5 "
+          >
+            Prev
+          </button>
+
+          <p>
+            Page {CURRENT_PAGE} of Page {TOTAL_PAGES}
+          </p>
+          <button
+            disabled={CURRENT_PAGE == TOTAL_PAGES}
+            onClick={() => {
+              setCURRENT_PAGE(CURRENT_PAGE + 1);
+            }}
+            className="border-2 border-black py-2 px-4 rounded-lg mx-5"
+          >
+            Next
+          </button>
         </div>
       </div>
     </>
