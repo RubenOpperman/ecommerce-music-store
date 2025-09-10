@@ -28,17 +28,6 @@ export default function Navbar() {
               MICROPHONES
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/pro-Audio" className="text-xl font-medium">
-              PRO AUDIO
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink to="/studio" className="text-xl font-medium">
-              STUDIO
-            </NavLink>
-          </li>
 
           <li>
             <NavLink to="/contact" className="text-xl font-medium">
