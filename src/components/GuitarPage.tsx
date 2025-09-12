@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 
 interface IGuitarData {
   id: number;
+  category: string;
   name: string;
   image: string;
   cost: number;
@@ -47,7 +48,6 @@ export default function GuitarPage({ GuitarData }: GuitarPageProps) {
           </div>
           <div className="flex">
             <h3>Product categories</h3>
-            <input type="text" />
           </div>
           <div>Filter by price</div>
           <div>filter brand</div>

@@ -21,6 +21,7 @@ const responsive = {
 
 interface IGuitarData {
   id: number;
+  category: string;
   name: string;
   image: string;
   cost: number;
@@ -37,6 +38,7 @@ interface HomeProps {
 }
 
 export default function Home({ GuitarData }: HomeProps) {
+  console.log("GG", GuitarData, "GG");
   return (
     <>
       <div>
