@@ -38,7 +38,6 @@ interface HomeProps {
 }
 
 export default function Home({ GuitarData }: HomeProps) {
-  console.log("GG", GuitarData, "GG");
   return (
     <>
       <div>
