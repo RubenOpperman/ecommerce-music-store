@@ -34,7 +34,7 @@ interface IGuitarData {
 [];
 
 interface HomeProps {
-  GuitarData: IGuitarData;
+  GuitarData: IGuitarData[];
 }
 
 export default function Home({ GuitarData }: HomeProps) {

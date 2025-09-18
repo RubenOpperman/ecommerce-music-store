@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
-interface IGuitarData {
+interface IKeyboardData {
   id: number;
   category: string;
   name: string;
@@ -15,19 +15,19 @@ interface IGuitarData {
 }
 [];
 
-interface GuitarPageProps {
-  GuitarData: IGuitarData[];
+interface KeyboardPageProps {
+  KeyboardData: IKeyboardData[];
 }
-export default function GuitarPage({ GuitarData }: GuitarPageProps) {
+export default function KeyboardPage({ KeyboardData }: KeyboardPageProps) {
   const ITEMS_PER_PAGE: number = 8;
   const [CURRENT_PAGE, setCURRENT_PAGE] = useState(1);
   const START_INDEX = (CURRENT_PAGE - 1) * ITEMS_PER_PAGE;
   const END_INDEX: number = CURRENT_PAGE * ITEMS_PER_PAGE;
-  const ITEMS_FOR_CURRENT_PAGE: IGuitarData[] = GuitarData.slice(
+  const ITEMS_FOR_CURRENT_PAGE: IKeyboardData[] = KeyboardData.slice(
     START_INDEX,
     END_INDEX
   );
-  const TOTAL_PAGES: number = Math.ceil(GuitarData.length / ITEMS_PER_PAGE);
+  const TOTAL_PAGES: number = Math.ceil(KeyboardData.length / ITEMS_PER_PAGE);
 
   return (
     <>
@@ -60,12 +60,13 @@ export default function GuitarPage({ GuitarData }: GuitarPageProps) {
               id="brands"
             >
               <option value="">NONE</option>
-              <option value="Fender">Fender</option>
-              <option value="Gibson">Gibson</option>
-              <option value="Epiphone">Epiphone</option>
-              <option value="PRS">PRS</option>
-              <option value="Taylor">Taylor</option>
+              <option value="Pearl">Pearl</option>
+              <option value="Tama">Tama</option>
+              <option value="Ludwig">Ludwig</option>
+              <option value="Roland">Roland</option>
+              <option value="Mapex">Mapex</option>
               <option value="Yamaha">Yamaha</option>
+              <option value="Gretsch">Gretsch</option>
             </select>
           </div>
 
@@ -84,15 +85,15 @@ export default function GuitarPage({ GuitarData }: GuitarPageProps) {
           </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg-grid-cols-4">
-          {ITEMS_FOR_CURRENT_PAGE.map((guitar: IGuitarData) => (
-            <div key={guitar.id} className="  m-2 p-2 ">
+          {ITEMS_FOR_CURRENT_PAGE.map((keyboard: IKeyboardData) => (
+            <div key={keyboard.id} className="  m-2 p-2 ">
               <img
-                src={guitar.image}
+                src={keyboard.image}
                 alt=""
                 className=" w-30 h-30 md:w-40 md:h-40 lg:w-50 lg:h-50 rounded-xl "
               />
-              <h3 className="font-bold text-xl mt-3">{guitar.name}</h3>
-              <p className="font-medium text-lg">R{guitar.cost}</p>
+              <h3 className="font-bold text-xl mt-3">{keyboard.name}</h3>
+              <p className="font-medium text-lg">R{keyboard.cost}</p>
             </div>
           ))}
         </div>
