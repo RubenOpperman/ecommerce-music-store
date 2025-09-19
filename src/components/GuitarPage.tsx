@@ -20,20 +20,28 @@ interface GuitarPageProps {
   GuitarData: IGuitarData[];
 }
 export default function GuitarPage({ GuitarData }: GuitarPageProps) {
+  //search filter
+  const [searchFilter, setSearchFilter] = useState<string>("");
+
+  //filter name
+  const filteredData = GuitarData.filter((guitar) =>
+    guitar.name.toLowerCase().includes(searchFilter.toLowerCase())
+  );
+
   const ITEMS_PER_PAGE: number = 8;
   const [CURRENT_PAGE, setCURRENT_PAGE] = useState(1);
   const START_INDEX = (CURRENT_PAGE - 1) * ITEMS_PER_PAGE;
   const END_INDEX: number = CURRENT_PAGE * ITEMS_PER_PAGE;
-  const ITEMS_FOR_CURRENT_PAGE: IGuitarData[] = GuitarData.slice(
+  const ITEMS_FOR_CURRENT_PAGE: IGuitarData[] = filteredData.slice(
     START_INDEX,
     END_INDEX
   );
-  const TOTAL_PAGES: number = Math.ceil(GuitarData.length / ITEMS_PER_PAGE);
+  const TOTAL_PAGES: number = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
 
   return (
     <>
       <div>
-        <Filter />
+        <Filter setSearchFilter={setSearchFilter} />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg-grid-cols-4">
           {ITEMS_FOR_CURRENT_PAGE.map((guitar: IGuitarData) => (
             <div key={guitar.id} className="  m-2 p-2 ">

@@ -1,5 +1,10 @@
 import { FaSearch } from "react-icons/fa";
-export function Filter() {
+
+export function Filter({
+  setSearchFilter,
+}: {
+  setSearchFilter: (value: string) => void;
+}) {
   return (
     <>
       <div className=" py-10 px-5 flex justify-around items-center">
@@ -8,6 +13,9 @@ export function Filter() {
             type="text"
             placeholder="Product"
             className="w-[25vw] py-2 px-4 rounded-md"
+            onChange={(e) => {
+              setSearchFilter(e.target.value);
+            }}
           />
           <button
             type="button"

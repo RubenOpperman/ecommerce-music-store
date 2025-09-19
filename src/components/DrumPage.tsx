@@ -19,20 +19,26 @@ interface DrumPageProps {
   DrumData: IDrumData[];
 }
 export default function DrumPage({ DrumData }: DrumPageProps) {
+  const [searchFilter, setSearchFilter] = useState<string>("");
+
+  const filteredData = DrumData.filter((drum) =>
+    drum.name.toLowerCase().includes(searchFilter.toLowerCase())
+  );
+
   const ITEMS_PER_PAGE: number = 8;
   const [CURRENT_PAGE, setCURRENT_PAGE] = useState(1);
   const START_INDEX = (CURRENT_PAGE - 1) * ITEMS_PER_PAGE;
   const END_INDEX: number = CURRENT_PAGE * ITEMS_PER_PAGE;
-  const ITEMS_FOR_CURRENT_PAGE: IDrumData[] = DrumData.slice(
+  const ITEMS_FOR_CURRENT_PAGE: IDrumData[] = filteredData.slice(
     START_INDEX,
     END_INDEX
   );
-  const TOTAL_PAGES: number = Math.ceil(DrumData.length / ITEMS_PER_PAGE);
+  const TOTAL_PAGES: number = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
 
   return (
     <>
       <div>
-        <Filter />
+        <Filter setSearchFilter={setSearchFilter} />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg-grid-cols-4">
           {ITEMS_FOR_CURRENT_PAGE.map((drum: IDrumData) => (
             <div key={drum.id} className="  m-2 p-2 ">

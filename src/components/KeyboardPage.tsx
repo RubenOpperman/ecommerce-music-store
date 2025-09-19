@@ -19,20 +19,26 @@ interface KeyboardPageProps {
   KeyboardData: IKeyboardData[];
 }
 export default function KeyboardPage({ KeyboardData }: KeyboardPageProps) {
+  const [searchFilter, setSearchFilter] = useState<string>("");
+
+  const filteredData = KeyboardData.filter((keyboard) =>
+    keyboard.name.toLowerCase().includes(searchFilter.toLowerCase())
+  );
+
   const ITEMS_PER_PAGE: number = 8;
   const [CURRENT_PAGE, setCURRENT_PAGE] = useState(1);
   const START_INDEX = (CURRENT_PAGE - 1) * ITEMS_PER_PAGE;
   const END_INDEX: number = CURRENT_PAGE * ITEMS_PER_PAGE;
-  const ITEMS_FOR_CURRENT_PAGE: IKeyboardData[] = KeyboardData.slice(
+  const ITEMS_FOR_CURRENT_PAGE: IKeyboardData[] = filteredData.slice(
     START_INDEX,
     END_INDEX
   );
-  const TOTAL_PAGES: number = Math.ceil(KeyboardData.length / ITEMS_PER_PAGE);
+  const TOTAL_PAGES: number = Math.ceil(filteredData.length / ITEMS_PER_PAGE);
 
   return (
     <>
       <div>
-        <Filter />
+        <Filter setSearchFilter={setSearchFilter} />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg-grid-cols-4">
           {ITEMS_FOR_CURRENT_PAGE.map((keyboard: IKeyboardData) => (
             <div key={keyboard.id} className="  m-2 p-2 ">
