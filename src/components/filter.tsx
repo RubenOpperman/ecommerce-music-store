@@ -25,15 +25,14 @@ export function Filter({
           </button>
         </div>
 
-        <div className="flex gap-3">
+        <div className=" gap-3">
           <h3>Filter Price range:</h3>
-          <input className="accent-red-500" min="0" max="100" type="range" />
         </div>
 
         <div className="flex gap-3">
           <label htmlFor="brands">Filter by brand</label>
           <select
-            className=" border-2 border-red-500  rounded-sm"
+            className=" border-2 border-red-500 rounded-sm"
             name="brands"
             id="brands"
           >

@@ -26,7 +26,7 @@ export default function KeyboardPage({ KeyboardData }: KeyboardPageProps) {
   );
 
   const ITEMS_PER_PAGE: number = 8;
-  const [CURRENT_PAGE, setCURRENT_PAGE] = useState(1);
+  const [CURRENT_PAGE, setCURRENT_PAGE] = useState<number>(1);
   const START_INDEX = (CURRENT_PAGE - 1) * ITEMS_PER_PAGE;
   const END_INDEX: number = CURRENT_PAGE * ITEMS_PER_PAGE;
   const ITEMS_FOR_CURRENT_PAGE: IKeyboardData[] = filteredData.slice(
